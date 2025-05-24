@@ -40,7 +40,9 @@
             </div>
             <div class="col-lg-6">
                 <div class="card">
-                    <div class="card-body" style="height: 20rem" id="chart-container"></div>
+                    <div class="card-body" style="height: 20rem">
+                        <div id="chart-container" class="w-100 h-100 rounded overflow-hidden"></div>
+                    </div>
                 </div>
             </div>
             <div class="col-12">
@@ -79,7 +81,15 @@
 
 <script>
     const container = document.getElementById('chart-container');
-    const chart = LightweightCharts.createChart(container, { width: container.clientWidth, height: container.clientHeight });
+    // Get computed padding values
+    const style = getComputedStyle(container);
+    const paddingX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
+    const paddingY = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+
+    // Subtract padding from actual dimensions
+    const width = container.clientWidth - paddingX;
+    const height = container.clientHeight - paddingY;
+    const chart = LightweightCharts.createChart(container, {width,height,});
     const lineSeries = chart.addSeries(LightweightCharts.LineSeries);
     lineSeries.setData([
         { time: '2019-04-11', value: 80.01 },
