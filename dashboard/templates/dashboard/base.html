@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark" data-bs-theme-base="zinc" data-bs-theme-primary="green">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Django App{% endblock %}</title>
+
+    <!-- Thêm Tabler CSS từ CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
+
+    <!-- Tabler Themes local -->
+    <link rel="stylesheet" href="{% static 'css/tabler-themes.css' %}">
+
+    <!-- Thêm Tabler JS từ CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
+
+    <!-- Các file CSS và JS khác của bạn có thể thêm ở đây -->
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+
+    {% block extra_head %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="page">
+        {% include "includes/sidebar.html" %}
+        <div class="page-wrapper">
+            {% block content %}
+            {% endblock %}
+            {% include "includes/footer.html" %}
+        </div>
+    </div>
+    {% include 'includes/scripts.html' %}
+    <!-- Specific Page JS goes HERE  -->
+    {% block javascripts %}{% endblock javascripts %}
+</body>
+</html>
