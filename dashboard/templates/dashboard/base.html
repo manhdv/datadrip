@@ -24,13 +24,15 @@
 </head>
 
 <body>
-    <div class="page">
-        {% include "includes/sidebar.html" %}
-        <div class="page-wrapper">
-            {% block content %}
-            {% include "dashboard/chart.html" %}
-            {% endblock %}
-            {% include "includes/footer.html" %}
+    <div class="layout-fluid">
+        <div class="page">
+            {% include "includes/sidebar.html" %}
+            <div class="page-wrapper">
+                {% block content %}
+                {% include "dashboard/chart.html" %}
+                {% endblock %}
+                {% include "includes/footer.html" %}
+            </div>
         </div>
     </div>
     {% include 'includes/scripts.html' %}
